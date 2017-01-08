@@ -1,15 +1,15 @@
 #include "BaseGameScene.h"
 #include "SimpleAudioEngine.h"
-
+#include <vector>
 USING_NS_CC;
 
-Scene* HelloWorld::createScene()
+Scene* BaseWorld::createScene()
 {
     // 'scene' is an autorelease object
     auto scene = Scene::create();
     
     // 'layer' is an autorelease object
-    auto layer = HelloWorld::create();
+    auto layer = BaseWorld::create();
 
     // add layer as a child to scene
     scene->addChild(layer);
@@ -19,65 +19,27 @@ Scene* HelloWorld::createScene()
 }
 
 // on "init" you need to initialize your instance
-bool HelloWorld::init()
+bool BaseWorld::init()
 {
-    //////////////////////////////
-    // 1. super init first
-    if ( !Layer::init() )
-    {
-        return false;
+    
+    std::string hexColor1 = "4ECDC4";
+    std::string hexColor2 = "556270";
+    
+    std::vector<unsigned char> rgbColor1(3);
+    std::vector<unsigned char> rgbColor2(3);
+    
+    hextodec(hexColor1, rgbColor1);
+    hextodec(hexColor2, rgbColor2);
+    Color4B color1 =Color4B(int(rgbColor1[0]),int(rgbColor1[1]),int(rgbColor1[2]),255);
+    Color4B color2 = Color4B(int(rgbColor2[0]),int(rgbColor2[1]),int(rgbColor2[2]),255);
+    if(LayerGradient::initWithColor(color1, color2, Vec2(0, -1))){
+        return true;
     }
-    
-    auto visibleSize = Director::getInstance()->getVisibleSize();
-    Vec2 origin = Director::getInstance()->getVisibleOrigin();
-
-    /////////////////////////////
-    // 2. add a menu item with "X" image, which is clicked to quit the program
-    //    you may modify it.
-
-    // add a "close" icon to exit the progress. it's an autorelease object
-    auto closeItem = MenuItemImage::create(
-                                           "CloseNormal.png",
-                                           "CloseSelected.png",
-                                           CC_CALLBACK_1(HelloWorld::menuCloseCallback, this));
-    
-    closeItem->setPosition(Vec2(origin.x + visibleSize.width - closeItem->getContentSize().width/2 ,
-                                origin.y + closeItem->getContentSize().height/2));
-
-    // create menu, it's an autorelease object
-    auto menu = Menu::create(closeItem, NULL);
-    menu->setPosition(Vec2::ZERO);
-    this->addChild(menu, 1);
-
-    /////////////////////////////
-    // 3. add your codes below...
-
-    // add a label shows "Hello World"
-    // create and initialize a label
-    
-    auto label = Label::createWithTTF("Hello World", "fonts/Marker Felt.ttf", 24);
-    
-    // position the label on the center of the screen
-    label->setPosition(Vec2(origin.x + visibleSize.width/2,
-                            origin.y + visibleSize.height - label->getContentSize().height));
-
-    // add the label as a child to this layer
-    this->addChild(label, 1);
-
-    // add "HelloWorld" splash screen"
-    auto sprite = Sprite::create("HelloWorld.png");
-
-    // position the sprite on the center of the screen
-    sprite->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
-
-    // add the sprite as a child to this layer
-    this->addChild(sprite, 0);
-    
-    return true;
+    return false;
 }
 
 
-void HelloWorld::menuCloseCallback(Ref* pSender)
+void BaseWorld::menuCloseCallback(Ref* pSender)
 {
     //Close the cocos2d-x game scene and quit the application
     Director::getInstance()->end();
@@ -91,5 +53,143 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
     //EventCustom customEndEvent("game_scene_close_event");
     //_eventDispatcher->dispatchEvent(&customEndEvent);
     
+    
+}
+
+
+void BaseWorld::hextodec(std::string hex, std::vector<unsigned char>& rgb)
+
+{
+    
+    
+    std::string redString = hex.substr(0, 2);
+    
+    std::string greenString = hex.substr(2, 2);
+    
+    std::string blueString = hex.substr(4, 2);
+
+    unsigned char red = (unsigned char)(convertFromHex(redString));
+    
+    unsigned char green = (unsigned char)(convertFromHex(greenString));
+    
+    unsigned char blue = (unsigned char)(convertFromHex(blueString));
+    
+    
+    
+    rgb[0] = red;
+    
+    rgb[1] = green;
+    
+    rgb[2] = blue;
+    
+}
+
+
+int BaseWorld::convertFromHex(std::string hex)
+
+{
+    
+    int value = 0;
+    
+    
+    
+    int a = 0;
+    
+    int b = hex.length() - 1;
+    
+    for (; b >= 0; a++, b--)
+        
+    {
+        
+        if (hex[b] >= '0' && hex[b] <= '9')
+            
+        {
+            
+            value += (hex[b] - '0') * (1 << (a * 4));
+            
+        }
+        
+        else
+            
+        {
+            
+            switch (hex[b])
+            
+            {
+                    
+                case 'A':
+                    
+                case 'a':
+                    
+                    value += 10 * (1 << (a * 4));
+                    
+                    break;
+                    
+                    
+                    
+                case 'B':
+                    
+                case 'b':
+                    
+                    value += 11 * (1 << (a * 4));
+                    
+                    break;
+                    
+                    
+                    
+                case 'C':
+                    
+                case 'c':
+                    
+                    value += 12 * (1 << (a * 4));
+                    
+                    break;
+                    
+                    
+                    
+                case 'D':
+                    
+                case 'd':
+                    
+                    value += 13 * (1 << (a * 4));
+                    
+                    break;
+                    
+                    
+                    
+                case 'E':
+                    
+                case 'e':
+                    
+                    value += 14 * (1 << (a * 4));
+                    
+                    break;
+                    
+                    
+                    
+                case 'F':
+                    
+                case 'f':
+                    
+                    value += 15 * (1 << (a * 4));
+                    
+                    break;
+                    
+                    
+                    
+                default:
+
+                    
+                    break;
+                    
+            }
+            
+        }
+        
+    }
+    
+    
+    
+    return value;
     
 }
