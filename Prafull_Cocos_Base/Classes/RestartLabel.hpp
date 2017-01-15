@@ -34,6 +34,14 @@ public:
     static RestartLabel* getInstanceWithSize(Size,std::string);
     void dismiss();
     void showInScene(Layer*);
+    bool initWithColor(Color3B,Size);
+    virtual bool onTouchBegan(Touch *touch, Event *unused_event);
+    
+    virtual void onTouchMoved(Touch *touch, Event *unused_event);
+    
+    virtual void onTouchEnded(Touch *touch, Event *unused_event);
+    
+    virtual void onTouchCancelled(Touch *touch, Event *unused_event);
 };
 
 
