@@ -13,6 +13,9 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		294D0D641D0D56D500F7F5D4 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 294D0D631D0D56D500F7F5D4 /* CoreText.framework */; };
+		3A2DB08B1E2AD64A00A4CD50 /* ScoreLabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3A2DB0891E2AD64A00A4CD50 /* ScoreLabel.cpp */; };
+		3A2DB08F1E2ADB2000A4CD50 /* RestartLabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3A2DB08D1E2ADB2000A4CD50 /* RestartLabel.cpp */; };
+		3A2DB0921E2BF49600A4CD50 /* Constants.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3A2DB0901E2BF49600A4CD50 /* Constants.cpp */; };
 		3EACC98F19EE6D4300EB3C5E /* res in Resources */ = {isa = PBXBuildFile; fileRef = 3EACC98E19EE6D4300EB3C5E /* res */; };
 		3EACC99019EE6D4300EB3C5E /* res in Resources */ = {isa = PBXBuildFile; fileRef = 3EACC98E19EE6D4300EB3C5E /* res */; };
 		46880B7B19C43A67006E1F66 /* CloseNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = 46880B7619C43A67006E1F66 /* CloseNormal.png */; };
@@ -118,6 +121,12 @@
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		294D0D631D0D56D500F7F5D4 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/CoreText.framework; sourceTree = DEVELOPER_DIR; };
+		3A2DB0891E2AD64A00A4CD50 /* ScoreLabel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScoreLabel.cpp; sourceTree = "<group>"; };
+		3A2DB08A1E2AD64A00A4CD50 /* ScoreLabel.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ScoreLabel.hpp; sourceTree = "<group>"; };
+		3A2DB08D1E2ADB2000A4CD50 /* RestartLabel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RestartLabel.cpp; sourceTree = "<group>"; };
+		3A2DB08E1E2ADB2000A4CD50 /* RestartLabel.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RestartLabel.hpp; sourceTree = "<group>"; };
+		3A2DB0901E2BF49600A4CD50 /* Constants.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Constants.cpp; sourceTree = "<group>"; };
+		3A2DB0911E2BF49600A4CD50 /* Constants.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Constants.hpp; sourceTree = "<group>"; };
 		3EACC98E19EE6D4300EB3C5E /* res */ = {isa = PBXFileReference; lastKnownFileType = folder; path = res; sourceTree = "<group>"; };
 		46880B7619C43A67006E1F66 /* CloseNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseNormal.png; sourceTree = "<group>"; };
 		46880B7719C43A67006E1F66 /* CloseSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseSelected.png; sourceTree = "<group>"; };
@@ -313,6 +322,12 @@
 				46880B8519C43A87006E1F66 /* AppDelegate.h */,
 				46880B8619C43A87006E1F66 /* BaseGameScene.cpp */,
 				46880B8719C43A87006E1F66 /* BaseGameScene.h */,
+				3A2DB0891E2AD64A00A4CD50 /* ScoreLabel.cpp */,
+				3A2DB08A1E2AD64A00A4CD50 /* ScoreLabel.hpp */,
+				3A2DB08D1E2ADB2000A4CD50 /* RestartLabel.cpp */,
+				3A2DB08E1E2ADB2000A4CD50 /* RestartLabel.hpp */,
+				3A2DB0901E2BF49600A4CD50 /* Constants.cpp */,
+				3A2DB0911E2BF49600A4CD50 /* Constants.hpp */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -514,6 +529,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
+				3A2DB08B1E2AD64A00A4CD50 /* ScoreLabel.cpp in Sources */,
+				3A2DB08F1E2ADB2000A4CD50 /* RestartLabel.cpp in Sources */,
+				3A2DB0921E2BF49600A4CD50 /* Constants.cpp in Sources */,
 				46880B8A19C43A87006E1F66 /* BaseGameScene.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
